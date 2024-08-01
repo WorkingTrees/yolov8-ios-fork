@@ -11,16 +11,17 @@ class YoloClassifier{
     
     
     
-    func classifyImage()-> bestOutput?{
+    func classifyImage() -> FastSAM_xOutput?{
+        let fsModelWrapper = try? FastSAM_x()
         
-        let bestModelWrapper = try? best()
-        
-        guard let bestModel = bestModelWrapper else{
+        guard let fsModel = fsModelWrapper else{
             return nil
         }
-        let imageUrl = Bundle.main.url(forResource: "tomcruise", withExtension: "jpeg")!
+        
+        let imageUrl = Bundle.main.url(forResource: "tree-test", withExtension: "png")!
+        
         do{
-            let output = try bestModel.prediction(input: bestInput(imageAt: imageUrl))
+            let output = try fsModel.prediction(input: FastSAM_xInput(imageAt: imageUrl))
             print(output)
             return output
         }
@@ -31,21 +32,21 @@ class YoloClassifier{
     }
     
     func classifyVisionModel(onClassified: @escaping ([Any])->Void){
-        let bestModelWrapper = try? best()
+        let fsModelWrapper = try? FastSAM_x()
         
-        guard let bestModel = bestModelWrapper else{
+        guard let fsModel = fsModelWrapper else{
             return
         }
         do
         {
-            let visionModel = try VNCoreMLModel(for: bestModel.model)
+            let visionModel = try VNCoreMLModel(for: fsModel.model)
             let segmentationRequest = VNCoreMLRequest(model: visionModel, completionHandler: {(req,err) in
                 if let results = req.results{
                     onClassified(results)
                 }
             })
             let processingRequests = [segmentationRequest]
-            let segmentationRequestHandler = VNImageRequestHandler(url: Bundle.main.url(forResource: "tomcruise", withExtension: "jpeg")!
+            let segmentationRequestHandler = VNImageRequestHandler(url: Bundle.main.url(forResource: "tree-test", withExtension: "png")!
                                                                    , orientation: .up)
             try segmentationRequestHandler.perform(processingRequests)
         }

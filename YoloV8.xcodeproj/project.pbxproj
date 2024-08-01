@@ -11,9 +11,10 @@
 		020577B22B15856E00A14562 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020577B12B15856E00A14562 /* ContentView.swift */; };
 		020577B42B15856F00A14562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020577B32B15856F00A14562 /* Assets.xcassets */; };
 		020577B82B15856F00A14562 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020577B72B15856F00A14562 /* Preview Assets.xcassets */; };
-		020577BF2B1587C700A14562 /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 020577BE2B1587C700A14562 /* best.mlpackage */; };
 		020577C12B1588CD00A14562 /* YoloClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020577C02B1588CD00A14562 /* YoloClassifier.swift */; };
 		020577C32B158CE000A14562 /* tomcruise.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 020577C22B158CE000A14562 /* tomcruise.jpeg */; };
+		80C5EFEE2C5C059900A5A53F /* FastSAM-x.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 80C5EFED2C5C059900A5A53F /* FastSAM-x.mlpackage */; };
+		80C5EFF02C5C0C4C00A5A53F /* tree-test.png in Resources */ = {isa = PBXBuildFile; fileRef = 80C5EFEF2C5C0C4C00A5A53F /* tree-test.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +24,10 @@
 		020577B32B15856F00A14562 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		020577B52B15856F00A14562 /* YoloV8.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YoloV8.entitlements; sourceTree = "<group>"; };
 		020577B72B15856F00A14562 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		020577BE2B1587C700A14562 /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
 		020577C02B1588CD00A14562 /* YoloClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoloClassifier.swift; sourceTree = "<group>"; };
 		020577C22B158CE000A14562 /* tomcruise.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tomcruise.jpeg; sourceTree = "<group>"; };
+		80C5EFED2C5C059900A5A53F /* FastSAM-x.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "FastSAM-x.mlpackage"; sourceTree = "<group>"; };
+		80C5EFEF2C5C0C4C00A5A53F /* tree-test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree-test.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 		020577AE2B15856E00A14562 /* YoloV8 */ = {
 			isa = PBXGroup;
 			children = (
-				020577BE2B1587C700A14562 /* best.mlpackage */,
+				80C5EFED2C5C059900A5A53F /* FastSAM-x.mlpackage */,
 				020577AF2B15856E00A14562 /* YoloV8App.swift */,
 				020577C02B1588CD00A14562 /* YoloClassifier.swift */,
 				020577B12B15856E00A14562 /* ContentView.swift */,
@@ -66,6 +68,7 @@
 				020577B52B15856F00A14562 /* YoloV8.entitlements */,
 				020577B62B15856F00A14562 /* Preview Content */,
 				020577C22B158CE000A14562 /* tomcruise.jpeg */,
+				80C5EFEF2C5C0C4C00A5A53F /* tree-test.png */,
 			);
 			path = YoloV8;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				020577B82B15856F00A14562 /* Preview Assets.xcassets in Resources */,
+				80C5EFF02C5C0C4C00A5A53F /* tree-test.png in Resources */,
 				020577C32B158CE000A14562 /* tomcruise.jpeg in Resources */,
 				020577B42B15856F00A14562 /* Assets.xcassets in Resources */,
 			);
@@ -151,7 +155,7 @@
 			files = (
 				020577B22B15856E00A14562 /* ContentView.swift in Sources */,
 				020577B02B15856E00A14562 /* YoloV8App.swift in Sources */,
-				020577BF2B1587C700A14562 /* best.mlpackage in Sources */,
+				80C5EFEE2C5C059900A5A53F /* FastSAM-x.mlpackage in Sources */,
 				020577C12B1588CD00A14562 /* YoloClassifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +281,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YoloV8/Preview Content\"";
-				DEVELOPMENT_TEAM = KSJ27YCA8G;
+				DEVELOPMENT_TEAM = 2LS3QM58LL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -317,7 +321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YoloV8/Preview Content\"";
-				DEVELOPMENT_TEAM = KSJ27YCA8G;
+				DEVELOPMENT_TEAM = 2LS3QM58LL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

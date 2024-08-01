@@ -7,14 +7,16 @@
 import SwiftUI
 import UIKit
 import Vision
+
+
 struct ContentView: View {
     
-    @State var testImageSrc : UIImage? = UIImage(contentsOfFile: Bundle.main.path(forResource: "tomcruise", ofType: "jpeg")!) ?? nil
+    @State var testImageSrc : UIImage? = UIImage(contentsOfFile: Bundle.main.path(forResource: "tree-test", ofType: "png")!) ?? nil
     
     @State var maxProbValue:String = ""
     @State var bestMaskIdx = 0
-    let imageViewWidth = CGFloat(678/2)
-    let imageViewHeight = CGFloat(452/2)
+    let imageViewWidth = CGFloat(735/2)
+    let imageViewHeight = CGFloat(982/2)
     var body: some View {
         VStack {
             Image(uiImage: testImageSrc!)
@@ -36,36 +38,37 @@ struct ContentView: View {
     func ClassifyImage(){
         let results =  YoloClassifier().classifyImage()!
         print(results)
-        let boundingBox = getBoundingBox(feature:results.var_1504)
+        let boundingBox = getBoundingBox(feature:results.var_1550)
         DrawMask(boundingBox, masks: results.p)
     }
     
     
+    // CSC: TODO: use MLMultiArray dimensions instead of hardcoding literals (1024, 256, etc)
     fileprivate func DrawMask(_ boundingBox: CGRect, masks: MLMultiArray) {
-        let testImage = UIImage(contentsOfFile: Bundle.main.path(forResource: "tomcruise", ofType: "jpeg")!)!
+        let testImage = UIImage(contentsOfFile: Bundle.main.path(forResource: "tree-test", ofType: "png")!)!
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: imageViewWidth, height: imageViewHeight))
         
-        let scaledX : CGFloat = (boundingBox.minX/650)*imageViewWidth
-        let scaledY : CGFloat = (boundingBox.minY/650)*imageViewHeight
-        let scaledWidth : CGFloat = (boundingBox.width/650)*imageViewWidth
-        let scaledHeight : CGFloat = (boundingBox.height/650)*imageViewHeight
+        let scaledX : CGFloat = (boundingBox.minX/1024)*imageViewWidth
+        let scaledY : CGFloat = (boundingBox.minY/1024)*imageViewHeight
+        let scaledWidth : CGFloat = (boundingBox.width/1024)*imageViewWidth
+        let scaledHeight : CGFloat = (boundingBox.height/1024)*imageViewHeight
         
         let rectangle = CGRect(x: scaledX, y: scaledY, width: scaledWidth, height: scaledHeight)
         print("scaled rectangle \(rectangle)")
         
         
         let maskProbThreshold : Float = 0.5
-        let maskFill : Float = 1.0
+        // let maskFill : Float = 1.0
         //draw the mask
         var maskProbalities : [[Float]] = [] //this will contains 160x160 mask pixel probablities
         var maskProbYAxis : [Float] = []
         print("Actual Image bounds \(rectangle)")
         //get the bounds for mask to match the bounds
-        let mask_x_min = (rectangle.minX/imageViewWidth)*160
-        let mask_x_max = (rectangle.maxX/imageViewWidth)*160
+        let mask_x_min = (rectangle.minX/imageViewWidth)*256
+        let mask_x_max = (rectangle.maxX/imageViewWidth)*256
         
-        let mask_y_min = (rectangle.minY/imageViewHeight)*160
-        let mask_y_max = (rectangle.maxY/imageViewHeight)*160
+        let mask_y_min = (rectangle.minY/imageViewHeight)*256
+        let mask_y_max = (rectangle.maxY/imageViewHeight)*256
         
         for y in 0..<masks.shape[2].intValue{
             maskProbYAxis.removeAll()
@@ -89,8 +92,8 @@ struct ContentView: View {
             for y in 0..<maskProbalities.count {
                 for x in 0..<maskProbalities[y].count{
                     
-                    let xFactor = Float(imageViewWidth)/160
-                    let yFactor = Float(imageViewHeight)/160
+                    let xFactor = Float(imageViewWidth)/256
+                    let yFactor = Float(imageViewHeight)/256
                     let maskScaled_X = Double(x) * Double(xFactor)
                     let maskScaled_Y = Double(y) * Double(yFactor)
                     
