@@ -8,7 +8,6 @@ import SwiftUI
 import UIKit
 import Vision
 
-
 struct ContentView: View {
     
     @State var testImageSrc : UIImage? = UIImage(contentsOfFile: Bundle.main.path(forResource: "tree-test", ofType: "png")!) ?? nil
@@ -58,7 +57,7 @@ struct ContentView: View {
         
         
         let maskProbThreshold : Float = 0.5
-        // let maskFill : Float = 1.0
+        let maskFill : Float = 1.0
         //draw the mask
         var maskProbalities : [[Float]] = [] //this will contains 160x160 mask pixel probablities
         var maskProbYAxis : [Float] = []
